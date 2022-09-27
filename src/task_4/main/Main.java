@@ -1,17 +1,18 @@
 package task_4.main;
+import classes.output.Print;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         int[] A = {1, 2, -4, 6, 7};
-        ArrayList<Integer> primeNumbers = searchPrime(A);
-        System.out.print("Array elements: ");
-        for (int a:
-             A) {
-            System.out.format("%d ", a);
-        }
-        System.out.print("\nThe numbers of primes: ");
-        primeNumbers.forEach((a) -> System.out.format("%d ", a));
+        ArrayList<Integer> numberOfPrimes = searchPrime(A);
+        Print.printArray("Array", A);
+        printResults(numberOfPrimes);
+    }
+
+    public static void printResults(ArrayList<Integer> numberOfPrimes) {
+       System.out.print("\nThe numbers of primes:");
+        numberOfPrimes.forEach((a) -> System.out.format(" %d", a));
         System.out.println();
     }
     public static ArrayList<Integer> searchPrime(int[] A){

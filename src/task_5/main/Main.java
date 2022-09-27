@@ -1,14 +1,10 @@
 package task_5.main;
+import classes.output.Print;
 
 public class Main {
     public static void main(String[] args) {
         int[] A = {1, 2, -4, 6, 7, 10, 9};
-        System.out.print("Array elements: ");
-        for (int a:
-                A) {
-            System.out.format("%d ", a);
-        }
-        System.out.println();
+        Print.printArray("Array", A);
         System.out.format("Least number of deletions: %d\n", leastDeletions(A));
     }
     public static int findLongestIncreasingSequence(int[] arr){

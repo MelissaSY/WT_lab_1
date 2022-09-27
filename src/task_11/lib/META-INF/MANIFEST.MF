@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: task_9.main.Main
+Class-Path: classes.basket.Basket
+

@@ -1,21 +1,11 @@
 package task_7.main;
-
+import classes.output.Print;
 public class Main {
     public static void main(String[] args) {
         double[] A = {1.45, 2.3, -4.2, 6.09, 7, 10, 9.33};
-        System.out.print("Array: ");
-        for (double a:
-                A) {
-            System.out.format("%.2f ", a);
-        }
-        System.out.println();
+        Print.printArray("Array", A);
         shellSort(A);
-        System.out.print("Sorted array: ");
-        for (double a:
-                A) {
-            System.out.format("%.2f ", a);
-        }
-        System.out.println();
+        Print.printArray("Sorted array", A);
     }
     public static void shellSort(double[] array){
         int arrLength = array.length;
