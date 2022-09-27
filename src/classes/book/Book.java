@@ -27,7 +27,7 @@ public class Book implements Comparable<Book>, Cloneable {
     private String extractIsbn(String isbn13) {
         StringBuilder currentIsbn = new StringBuilder();
         int stringLen = isbn13.length();
-        for(int i = 0; i < stringLen && currentIsbn.length() < 14; i++){
+        for(int i = 0; i < stringLen && currentIsbn.length() < 13; i++){
             if(isbn13.charAt(i) >= '0' && isbn13.charAt(i) <= '9'){
                 currentIsbn.append(isbn13.charAt(i));
             }
