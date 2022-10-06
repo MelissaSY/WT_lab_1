@@ -9,22 +9,21 @@ public class Book implements Comparable<Book>, Cloneable {
     private static int edition;
 
     public Book(){}
-    public Book(String title, String author, int price, String isbn13, int edition) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
 
-        //this.isbn13 = isbn13;
-        this.isbn13 = extractIsbn(isbn13);
-        Book.edition = edition;
-    }
     public Book(String title, String author, int price, String isbn13) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
-        this.isbn13 = extractIsbn(isbn13);
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setPrice(price);
+        this.setIsbn13(isbn13);
     }
-    private String extractIsbn(String isbn13) {
+    public Book(String title, String author, int price, String isbn13, int edition) {
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setPrice(price);
+        this.setIsbn13(isbn13);
+        this.setEdition(edition);
+    }
+    private String extractIsbn13(String isbn13) {
         StringBuilder currentIsbn = new StringBuilder();
         int stringLen = isbn13.length();
         for(int i = 0; i < stringLen && currentIsbn.length() < 13; i++){
@@ -42,7 +41,7 @@ public class Book implements Comparable<Book>, Cloneable {
     @Override
     public boolean equals(Object obj) {
         boolean areTheSame = false;
-        if(obj.getClass().getSimpleName().equals("Book")){
+        if(obj.getClass() == getClass()){
             Book comparedBook = (Book)obj;
             areTheSame = this.title.equals(comparedBook.title) &&
                         this.author.equals(comparedBook.author) &&
@@ -77,26 +76,53 @@ public class Book implements Comparable<Book>, Cloneable {
     //task_14
     public Object clone() {
         Book book = new Book();
+        try {
+            book = (Book)super.clone();
+        } catch (CloneNotSupportedException ignored) {}
+
         book.title = this.title;
         book.price = this.price;
         book.author = this.author;
         return book;
     }
 
+
+    public String getTitle() {
+        return  this.title;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public String getIsbn13() {
+        return this.isbn13;
+    }
+    public int getPrice() {
+        return price;
+    }
+    public int getEdition() {
+        return Book.edition;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public void setPrice(int price) {
+        if(price > 0) {
+            this.price = price;
+        }
+    }
+    public void setIsbn13(String isbn13) {
+        this.isbn13 = extractIsbn13(isbn13);
+    }
+    public void setEdition(int edition) {
+        Book.edition = edition;
+    }
+
     //task_15
     @Override
     public int compareTo(Book book) {
         return this.isbn13.compareTo(book.isbn13);
-    }
-    public String getTitle() {
-        return  this.title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getPrice() {
-        return price;
     }
 }
