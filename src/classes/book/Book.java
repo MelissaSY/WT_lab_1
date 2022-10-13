@@ -41,6 +41,8 @@ public class Book implements Comparable<Book>, Cloneable {
     @Override
     public boolean equals(Object obj) {
         boolean areTheSame = false;
+        if(this == obj) { return true; }
+        if(obj == null) { return false; }
         if(obj.getClass() == getClass()){
             Book comparedBook = (Book)obj;
             areTheSame = this.title.equals(comparedBook.title) &&

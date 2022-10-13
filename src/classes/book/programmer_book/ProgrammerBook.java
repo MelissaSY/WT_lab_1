@@ -26,6 +26,8 @@ public class ProgrammerBook extends Book {
     @Override
     public boolean equals(Object obj) {
         boolean areTheSame = false;
+        if(this == obj) { return true; }
+        if(obj == null) { return false; }
         if(obj.getClass() == getClass()){
             ProgrammerBook comparedBook = (ProgrammerBook)obj;
             areTheSame = this.language.equals(comparedBook.language) &&
